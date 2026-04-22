@@ -58,7 +58,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
     }
 
 
-    protected  ListaSimplementeEnlazada<T> getListaPreOrdenRaiz(){
+    protected  ListaSimplementeEnlazada<T> getListaPreOrden(){
         ListaSimplementeEnlazada<T> datos=new ListaSimplementeEnlazada<>();
         return getListaPreOrden(raiz, datos);
     }
