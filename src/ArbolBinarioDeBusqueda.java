@@ -42,7 +42,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
     }
 
 
-    public int getAltura(Nodo<T> actual){
+    protected int getAltura(Nodo<T> actual){
         if (actual==null){
             return 0;
         }
@@ -58,7 +58,21 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
     }
 
 
+    protected  ListaSimplementeEnlazada<T> getListaPreOrdenRaiz(){
+        ListaSimplementeEnlazada<T> datos=new ListaSimplementeEnlazada<>();
+        return getListaPreOrden(raiz, datos);
+    }
 
+   protected ListaSimplementeEnlazada<T> getListaPreOrden(Nodo<T> actual, ListaSimplementeEnlazada<T> datos){
+        if(actual==null){
+            return datos;
+        }
+        datos.add(actual.getDato());
+        getListaPreOrden(actual.getIzquierda(), datos);
+        getListaPreOrden(actual.getDerecha(), datos);
+        return datos;
+
+   }
 
 
 }
