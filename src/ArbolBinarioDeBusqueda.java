@@ -7,6 +7,14 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
     }
 
 
+    public Nodo<T> getRaiz() {
+        return raiz;
+    }
+
+    public void setRaiz(Nodo<T> raiz) {
+        this.raiz = raiz;
+    }
+
     public boolean isEmpty(){
         return raiz==null; // devuelve true si no hay nodo raiz ( el árbol es vacío)
     }
@@ -104,6 +112,18 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
         getListaPostorden(actual.getDerecha(), DatosPost);
         DatosPost.add(actual.getDato());
         return DatosPost;
+   }
+
+
+   protected ArbolBinarioDeBusqueda<T> getSubArbolDerecha(Nodo<T> actual, ArbolBinarioDeBusqueda<T> arbol){
+        if(isEmpty() || actual.getIzquierda()==null ){
+            return null;
+        }
+
+        arbol.set
+
+
+
    }
 
 
