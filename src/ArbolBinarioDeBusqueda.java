@@ -13,11 +13,9 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
 
 
 
-
-
     // Inserta un dato en el árbol de forma recursiva
     protected Nodo<T> addNodo(Nodo<T> actual,T dato){
-        //Si no exise ningún nodo se crea la raiz
+        // Si no hay nodo en esta posición, se crea uno nuevo
         if(actual==null){
 
             return new  Nodo<>(dato);
@@ -25,12 +23,12 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
         }
         //Comparamos de forma recursiva para decidir en qué dirección irá el dato
 
-        //Si es menor irá a la derecha
+        // Si el dato es menor, irá a la izquierda
         if(actual.dato.compareTo(dato)>0){
             actual.izquierda=addNodo(actual.izquierda, dato);
 
         }
-        //Si es mayor irá a la izquierda
+        // Si el dato es mayor, irá a la derecha
         else if (actual.dato.compareTo(dato)<0){
             actual.derecha=addNodo(actual.derecha, dato);
         }
@@ -38,12 +36,26 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
 
     }
 
-
     //Inserta la raiz del árbol binario
     public void add(T dato){
         raiz = addNodo(raiz, dato);
     }
 
+
+    public int getAltura(Nodo<T> actual){
+        if (actual==null){
+            return 0;
+        }
+        int alturaIzquierda=getAltura(actual.izquierda);
+        int alturaDerecha=getAltura(actual.derecha);
+        return 1 + Math.max(alturaDerecha,alturaIzquierda);
+    }
+
+
+
+    public int getAlturaRaiz(){
+        return getAltura(raiz);
+    }
 
 
 
