@@ -1,2 +1,9 @@
-public class ÁrbolBinarioDeBúsquedaDeEnteros {
+public class ÁrbolBinarioDeBúsquedaDeEnteros{
+    private Nodo<Integer> raiz;
+
+
+
+
+
+    }
 }
