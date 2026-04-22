@@ -1,4 +1,4 @@
-public class Nodo<T> {
+public class Nodo< T  extends Comparable<T> >{
    protected T dato;
    protected Nodo<T> izquierda;
    protected Nodo<T> derecha;
@@ -8,6 +8,7 @@ public class Nodo<T> {
        this.izquierda=izquierda;
        this.derecha=derecha;
     }
+
 
     public Nodo(T dato){
         this(dato,null,null);
