@@ -59,19 +59,51 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
 
 
     protected  ListaSimplementeEnlazada<T> getListaPreOrden(){
-        ListaSimplementeEnlazada<T> datos=new ListaSimplementeEnlazada<>();
-        return getListaPreOrden(raiz, datos);
+        ListaSimplementeEnlazada<T> DatosPre=new ListaSimplementeEnlazada<>();
+        return getListaPreOrden(raiz, DatosPre);
     }
 
-   protected ListaSimplementeEnlazada<T> getListaPreOrden(Nodo<T> actual, ListaSimplementeEnlazada<T> datos){
+   protected ListaSimplementeEnlazada<T> getListaPreOrden(Nodo<T> actual, ListaSimplementeEnlazada<T> DatosPre){
         if(actual==null){
-            return datos;
+            return DatosPre;
         }
-        datos.add(actual.getDato());
-        getListaPreOrden(actual.getIzquierda(), datos);
-        getListaPreOrden(actual.getDerecha(), datos);
-        return datos;
+       DatosPre.add(actual.getDato());
+        getListaPreOrden(actual.getIzquierda(), DatosPre);
+        getListaPreOrden(actual.getDerecha(), DatosPre);
+        return DatosPre;
 
+   }
+
+   protected ListaSimplementeEnlazada<T> getListaOrdenCentral(Nodo<T> actual, ListaSimplementeEnlazada DatosCentral){
+       if(actual==null){
+           return null;
+       }
+       getListaOrdenCentral(actual.getIzquierda(), DatosCentral);
+       DatosCentral.add(actual.getDato());
+       getListaOrdenCentral(actual.getIzquierda(), DatosCentral);
+       return DatosCentral;
+   }
+
+   protected ListaSimplementeEnlazada<T> getListaordenCentral(){
+        ListaSimplementeEnlazada<T> DatosCentral= new ListaSimplementeEnlazada<>();
+        return getListaOrdenCentral(raiz,DatosCentral);
+   }
+
+
+   protected ListaSimplementeEnlazada<T> getListaPostOrden(){
+        ListaSimplementeEnlazada DatosPost=new ListaSimplementeEnlazada<>();
+        return getListaPostorden(raiz,DatosPost);
+   }
+
+
+   protected ListaSimplementeEnlazada<T> getListaPostorden(Nodo<T> actual, ListaSimplementeEnlazada DatosPost){
+        if(actual==null){
+            return null;
+        }
+        getListaPostorden(actual.getIzquierda(), DatosPost);
+        getListaPostorden(actual.getDerecha(), DatosPost);
+        DatosPost.add(actual.getDato());
+        return DatosPost;
    }
 
 
