@@ -116,18 +116,18 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
 
 
    protected ArbolBinarioDeBusqueda<T> getSubArbolDerecha(){
-         ArbolBinarioDeBusqueda SubArbol=new ArbolBinarioDeBusqueda<>(raiz);
+         ArbolBinarioDeBusqueda<T> SubArbol=new ArbolBinarioDeBusqueda<>(raiz);
         if(isEmpty()){
             return SubArbol ;
 
         }
-        SubArbol.raiz = SubArbol.raiz.getDerecha();
+        SubArbol.setRaiz(raiz.getDerecha());
         return SubArbol;
 
    }
 
    protected ArbolBinarioDeBusqueda<T> getSubArbolIzquierda(){
-        ArbolBinarioDeBusqueda SubArbol= new ArbolBinarioDeBusqueda<>(raiz);
+        ArbolBinarioDeBusqueda<T> SubArbol= new ArbolBinarioDeBusqueda<>(raiz);
         if(isEmpty()){
             return SubArbol;
 
@@ -135,6 +135,27 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
         SubArbol.setRaiz(raiz.getIzquierda());
         return SubArbol;
 
+   }
+
+
+   protected int getGrado(Nodo<T> actual){
+       int gradoActual=0;
+        if( actual==null){
+            return 0;
+       }
+        if (actual.getIzquierda()!=null) gradoActual++;
+
+        if (actual.getDerecha()!=null) gradoActual++;
+
+
+        int gradoIzquierda = getGrado(actual.getIzquierda());
+        int gradoDerecha= getGrado(actual.getDerecha());
+
+        return Math.max(gradoActual,Math.max(gradoDerecha,gradoIzquierda);
+   }
+
+   public int gerGrado(){
+        return getGrado(raiz);
    }
 
 
