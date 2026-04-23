@@ -118,13 +118,26 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>>{
    protected ArbolBinarioDeBusqueda<T> getSubArbolDerecha(){
          ArbolBinarioDeBusqueda SubArbol=new ArbolBinarioDeBusqueda<>(raiz);
         if(isEmpty()){
-            return ArbolBinarioDeBusqueda;
+            return SubArbol ;
 
         }
         SubArbol.raiz = SubArbol.raiz.getDerecha();
         return SubArbol;
 
    }
+
+   protected ArbolBinarioDeBusqueda<T> getSubArbolIzquierda(){
+        ArbolBinarioDeBusqueda SubArbol= new ArbolBinarioDeBusqueda<>(raiz);
+        if(isEmpty()){
+            return SubArbol;
+
+        }
+        SubArbol.setRaiz(raiz.getIzquierda());
+        return SubArbol;
+
+   }
+
+
 
 
 }
